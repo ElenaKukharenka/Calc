@@ -8,12 +8,12 @@ if(isset($_POST['submit'])){
 	
 	// Валидация
 if(!$oper || (!$number1 && $number1 != '0') || (!$number2 && $number2 != '0')) {
-    $error_result = (iconv('UTF-8','WINDOWS-1251', "Не все поля заполнены"));
+    $error_result = "Не все поля заполнены";
 }
 // если все поля формы заполнены, проверяем, являются ли числами введенные пользователем значения
 else { 
     if(!is_numeric($number1) || !is_numeric($number2)) { 
-        $error_result =(iconv('UTF-8','WINDOWS-1251', "Вы ввели не числа!")) ; 
+        $error_result ="Вы ввели не числа!"; 
     }
     else 
         switch($oper){ 
@@ -31,7 +31,7 @@ else {
 	        break;
 	    case 'divide': 
 	        if( $number2 == '0') 
-		    $error_result = (iconv('UTF-8','WINDOWS-1251', "На ноль делить нельзя!")); 
+		    $error_result = "На ноль делить нельзя!"; 
 	        else 
 	            $result = $number1 / $number2; 
 				$operZnak = '/';
@@ -39,10 +39,10 @@ else {
         };
 };
 if(isset($error_result)) {
-    echo (iconv('UTF-8','WINDOWS-1251', "Ошибка: ")).$error_result;
+    echo "Ошибка: ".$error_result;
  }	
 else {
-$textRes = (iconv('UTF-8','WINDOWS-1251', "Ответ: "));
+$textRes = "Ответ: ";
     $res = $textRes.$number1.$operZnak.$number2."=".$result;
 	echo $res;
 	
